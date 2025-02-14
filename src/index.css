@@ -1,0 +1,6 @@
+@import "tailwindcss";
+.road-rage-regular {
+  font-family: "Road Rage", serif;
+  font-weight: 400;
+  font-style: normal;
+}
