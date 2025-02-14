@@ -1,4 +1,26 @@
 {
+	"version": 2,
+	"functions": {
+		"api/json-server.js": {
+			"runtime": "nodejs16.x"
+		}
+	},
+	"builds": [
+		{
+			"src": "build/**",
+			"use": "@vercel/static"
+		}
+	],
+	"routes": [
+		{
+			"src": "/api/(.*)",
+			"dest": "/api/json-server.js"
+		}
+		{
+			"src": "/(.*)",
+			"dest": "/build/$1"
+		}
+	],
 	"rewrites": [
 		{
 			"sources": "/(.*)",

@@ -15,7 +15,7 @@ const AttendeeDetails = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		axios.get('http://localhost:3000/tickets')
+		axios.get('/tickets')
 			.then(res => setTicket(res.data[0]))
 			.catch(err => console.log('Error fetching tickets: ', err))
 	}, [])
@@ -38,7 +38,7 @@ const AttendeeDetails = () => {
 	}
 
 	const onSubmit = (data) => {
-		axios.post('http://localhost:3000/details', data)
+		axios.post('/details', data)
 			.then(res => console.log(res))
 			.catch(err => console.error('Error posting details: ', err))
 		navigate('/get-ticket')
@@ -46,7 +46,7 @@ const AttendeeDetails = () => {
 
 	const handleGoBack = () => {
 		navigate('/')
-		axios.delete(`http://localhost:3000/tickets/${ticket.id}`)
+		axios.delete(`/tickets/${ticket.id}`)
 	}
 
 	const handleGetTicket = () => {
