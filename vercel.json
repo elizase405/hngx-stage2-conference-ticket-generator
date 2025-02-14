@@ -15,8 +15,8 @@
 			"dest": "/api/json-server.js"
 		},
 		{
-			"source": "/(.*)",
-			"destination": "/"
+			"src": "/(.*)",
+			"dest": "/"
 		}
 	]
 }
