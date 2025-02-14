@@ -1,14 +1,5 @@
 {
 	"version": 2,
-	"builds": [
-		{
-			"src": "src/api/json-server.js",
-			"use": "@vercel/node",
-			"config": {
-				"includeFiles": ["db.json"]
-			}
-		}
-	],
 	"routes": [
 		{
 			"src": "src/api/(.*)",
