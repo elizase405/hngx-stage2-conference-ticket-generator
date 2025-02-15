@@ -1,6 +1,6 @@
 {
 	"functions": {
-		"api/json-server.js": {
+		"json-server.js": {
 			"includeFiles": "db.json"
 		}
 	},
@@ -11,7 +11,7 @@
 		},
 		{
 			"source": "/(.*)",
-			"destination": "api/json-server.js"
+			"destination": "json-server.js"
 		}
 	]
 }
