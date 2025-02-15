@@ -11,9 +11,11 @@ function SelectTicket() {
 	const navigate = useNavigate();
 
 	const onSubmit = (data) => {
+		localStorage.setItem('tickets', JSON.stringify(data));
+		/*
 		axios.post('http://localhost:3000/tickets', data)
 			.then(res => console.log(res))
-			.catch(err => console.error('Error posting tickets: ', err))
+			.catch(err => console.error('Error posting tickets: ', err))*/
 		navigate('/attendee-details')
 	}
 	const handleNext = () => {

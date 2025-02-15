@@ -38,15 +38,16 @@ const AttendeeDetails = () => {
 	}
 
 	const onSubmit = (data) => {
-		axios.post('/details', data)
+		localStorage.setItem('details', JSON.stringify(data));
+		/*axios.post('/details', data)
 			.then(res => console.log(res))
-			.catch(err => console.error('Error posting details: ', err))
+			.catch(err => console.error('Error posting details: ', err))*/
 		navigate('/get-ticket')
 	}
 
 	const handleGoBack = () => {
 		navigate('/')
-		axios.delete(`/tickets/${ticket.id}`)
+		localStorage.clear()
 	}
 
 	const handleGetTicket = () => {

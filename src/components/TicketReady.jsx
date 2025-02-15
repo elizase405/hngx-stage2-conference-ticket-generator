@@ -12,18 +12,19 @@ const TicketReady = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		axios.get('/tickets')
+		/*axios.get('/tickets')
 			.then(res => setTicket(res.data[0]))
 			.catch(err => console.log('Error fetching tickets: ', err))
 		axios.get('/details')
 			.then(res => setDetails(res.data[0]))
-			.catch(err => console.log('Error fetching details: ', err))
+			.catch(err => console.log('Error fetching details: ', err))*/
+		setTicket(JSON.parse(localStorage.getItem('tickets')))
+		setDetails(JSON.parse(localStorage.getItem('details')))
 	}, [])
 	console.log(details, ticket)
 
 	const handleNewTicket = () => {
-		axios.delete(`/details/${details.id}`)
-		axios.delete(`/tickets/${ticket.id}`)
+		localStorage.clear()
 		navigate('/')
 	}
 
