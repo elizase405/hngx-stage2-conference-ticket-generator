@@ -62,7 +62,7 @@ const TicketReady = () => {
 									<span>March 15, 2025 | 7:00 PM</span>
 								</div>
 							</div>
-							<div className='w-40 h-28 md:h-38 border-2 border-[#24A0B5] rounded mb-2 md:mb-6'><img src={img} className='w-40 h-28 md:h-38'/></div>
+							<div className='w-40 h-28 md:h-30 border-2 border-[#24A0B5] rounded mb-2 md:mb-6'><img src={img} className='w-40 h-28 md:h-38'/></div>
 							<div className='w-[212px] md:w-[232px] h-32 md:h-48 bg-[#08343C] border-2 border-[#133D44] rounded-xl truncate'>
 								<div className='flex font-[roboto]'>
 									<Input label={'Enter your name'} value={details.name} />

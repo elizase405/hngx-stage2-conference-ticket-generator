@@ -6,6 +6,9 @@ import TicketType from './TicketType';
 import Button from './Button';
 
 function SelectTicket() {
+	const [ free, setFree ] = useState(true)
+	const [ vip, setVip ] = useState(false)
+	const [ vvip, setVVip ] = useState(false)
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const navigate = useNavigate();
 
@@ -16,6 +19,21 @@ function SelectTicket() {
 			.then(res => console.log(res))
 			.catch(err => console.error('Error posting tickets: ', err))*/
 		navigate('/attendee-details')
+	}
+	const handleFreeButton = () => {
+		setFree(true)
+		setVip(false)
+		setVVip(false)
+	}
+	const handleVipButton = () => {
+		setFree(false)
+		setVip(true)
+		setVVip(false)
+	}
+	const handleVVipButton = () => {
+		setFree(false)
+		setVip(false)
+		setVVip(true)
 	}
 	const handleNext = () => {
 		console.log('Next');
@@ -52,10 +70,10 @@ function SelectTicket() {
 					<div className='md:h-[174px]'>
 						<p className='font-[roboto]'>Select Ticket Type:</p>
 						<div className='flex flex-col justify-between bg-[#052228] border border-[#07373F] rounded-3xl p-4 w-[252px] md:w-full h-[410px] md:h-[158px] mt-2'>
-							<div className='flex flex-col md:flex-row justify-between space-y-3 md:space-y-0'>
-								<TicketType id={'ticketType1'} value='regular' bg='#12464E' amt={'Free'} accessType='regular access' register={register}/>
-								<TicketType id={'ticketType2'} value='vip' amt={'$150'} accessType='vip access' register={register}/>
-								<TicketType id={'ticketType3'} value='vvip' amt={'$150'} accessType='vvip access' register={register}/>
+							<div className='relative flex flex-col md:flex-row justify-between space-y-3 md:space-y-0'>
+								{free && <span className='absolute bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType1'} value='regular' amt={'Free'} accessType='regular access' handleClick={handleFreeButton} register={register}/>
+								{vip && <span className='absolute left-[181px] bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType2'} value='vip' amt={'$150'} accessType='vip access' handleClick={handleVipButton} register={register}/>
+								{vvip && <span className='absolute left-[363px] bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType3'} value='vvip' amt={'$150'} accessType='vvip access' handleClick={handleVVipButton} register={register}/>
 							</div>
 							{errors.ticketType && <p className='text-red-500 p-1.5 md:p-1 text-sm'>{errors.ticketType?.message}</p>}
 						</div>
