@@ -6,8 +6,7 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 server.use(jsonServer.rewriter({
-	"/api/*": "/$1".
-	"/blog/:resource/:id/show": ":resource/:id"
+	"/api/*": "/$1"
 }))
 server.listen(3000, () => {
 	console.log('JSON server is running')
