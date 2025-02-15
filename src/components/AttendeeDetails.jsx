@@ -9,6 +9,7 @@ import Button from './Button';
 const AttendeeDetails = () => {
 	const [ warning, setWarning ] = useState('');
 	const [ file, setFile ] = useState(null);
+	const [ imgUrl, setImgUrl ] = useState('');
 	const [ ticket, setTicket ] = useState([]);
 	const { register, handleSubmit, formState: {errors}} = useForm();
 	const navigate = useNavigate();
@@ -20,10 +21,28 @@ const AttendeeDetails = () => {
 		setTicket(JSON.parse(localStorage.getItem('tickets')))
 	}, [])
 
-	const handleFileChange = (e) => {
+	const handleImageUpload = (result) => {
+		if (result.event == 'success') {
+			setImgUrl(result.info.secure_url);
+		}
+	}
+
+	const handleFileChange = async (e) => {
 		const img = e.target.files[0];
 		if (img) {
 			setFile(URL.createObjectURL(img));
+			const data = new FormData();
+			data.append("file", img)
+			data.append("upload_preset", "ticketUser")
+			data.append("cloud_name", "duq0d08om")
+			
+			const res = await fetch("https://api.cloudinary.com/v1_1/duq0d08om/image/upload", {
+				method: "POST",
+				body: data
+			})
+			
+			const uploadedImageUrl = await res.json();
+			localStorage.setItem('url', JSON.stringify(uploadedImageUrl.url))
 		}
 	}
 	const handleDrop= (e) => {
