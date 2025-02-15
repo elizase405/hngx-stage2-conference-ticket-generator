@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Button from './Button';
 import Input from './Input';
 import bg from '../assets/bg.png';
+import barcode from '../assets/barcode.gif';
 
 const TicketReady = () => {
 	const [ ticket, setTicket ] = useState([]);
@@ -79,6 +80,7 @@ const TicketReady = () => {
 								</div>
 							</div>
 						</div>
+						<img src={barcode} className='absolute bottom-3.5 md:bottom-4.5 left-7 md:left-8 w-50 md:w-60'/>
 					</div>
 					<div className='flex flex-col md:flex-row justify-between h-[105px] md:h-full md:w-[604px]'>
 						<Button value={'Book Another Ticket'} color={'#24A0B5'} bg={'#08252B'} handleClick={handleNewTicket}/>
