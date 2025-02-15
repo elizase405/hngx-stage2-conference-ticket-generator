@@ -7,9 +7,8 @@ import Navbar from './Navbar';
 import Button from './Button';
 
 const AttendeeDetails = () => {
-	const [ warning, setWarning ] = useState('');
 	const [ file, setFile ] = useState(null);
-	const [ imgUrl, setImgUrl ] = useState('');
+	const [ notDone, setNotDone ] = useState(true);
 	const [ ticket, setTicket ] = useState([]);
 	const { register, handleSubmit, formState: {errors}} = useForm();
 	const navigate = useNavigate();
@@ -21,15 +20,10 @@ const AttendeeDetails = () => {
 		setTicket(JSON.parse(localStorage.getItem('tickets')))
 	}, [])
 
-	const handleImageUpload = (result) => {
-		if (result.event == 'success') {
-			setImgUrl(result.info.secure_url);
-		}
-	}
-
 	const handleFileChange = async (e) => {
 		const img = e.target.files[0];
 		if (img) {
+			setNotDone(false);
 			setFile(URL.createObjectURL(img));
 			const data = new FormData();
 			data.append("file", img)
@@ -70,8 +64,9 @@ const AttendeeDetails = () => {
 	}
 
 	const handleGetTicket = () => {
-			setWarning('Image is Required!')
+			console.log('get ticket')
 	}
+
 	return (
 		<div className='text-white pt-4 bg-gradient-radial flex flex-col items-center' style={{background: 'radial-gradient(52.52% 32.71% at 50% 97.66%, rgba(36, 160, 181, 0.2)0%, rgba(36, 160, 181, 0)100%), #02191D'}}>
 			<Navbar />
@@ -88,7 +83,7 @@ const AttendeeDetails = () => {
 				</div>
 				<div className='md:w-[604px] md:bg-[#08252B] md:border md:border-[#0E464F] md:p-6 md:rounded-3xl md:mt-6 font-[roboto]'>
 					<div className='w-[252px] md:w-full mt-14 md:mt-0 h-82 border border-[#07373F] bg-[#052228] px-6 pt-6 pb-12 rounded-3xl'>
-						<p className='text-red-500'>{warning}</p>
+					{notDone && <p className='text-red-500'>Image is Required!</p>}
 						<p className='font-[roboto]'>Upload Profile Photo</p>
 						<div className='my-8 bg-[#0E464F] h-50 flex justify-center items-center' style={{
 background: 'rgba(0, 0, 0, 0.2)'}}>
@@ -119,7 +114,7 @@ background: 'rgba(0, 0, 0, 0.2)'}}>
 					</div>
 					<div className='flex flex-col md:flex-row justify-between h-[112px] md:h-full'>
 						<Button value={'Back'} color={'#24A0B5'} bg={'#08252B'} handleClick={handleGoBack}/>
-						<Button value={'Get My Free Ticket'} color={'#fff'} bg={'#24A0B5'} handleClick={handleGetTicket}/>
+						<button type='submit' disabled={notDone} onClick={handleGetTicket} className='w-[252px] md:w-[266px] h-12 px-6 py-3 border border-[#24A0B5] rounded-lg cursor-pointer font-[roboto]' style={{background: '#24A0B5', color: '#fff'}}>Get My Free Ticket</button>
 					</div>
 				</div>
 			</form>
