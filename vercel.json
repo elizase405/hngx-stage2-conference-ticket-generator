@@ -1,8 +1,17 @@
 {
+	"functions": {
+		"src/api/json-server.js": {
+			"includeFiles": "db.json"
+		}
+	},
 	"rewrites": [
 		{
 			"source": "/(.*)",
 			"destination": "/"
+		},
+		{
+			"source": "/(.*)",
+			"destination": "src/api/json-server.js"
 		}
 	]
 }
