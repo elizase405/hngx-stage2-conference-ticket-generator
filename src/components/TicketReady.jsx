@@ -22,7 +22,6 @@ const TicketReady = () => {
 		setTicket(JSON.parse(localStorage.getItem('tickets')))
 		setDetails(JSON.parse(localStorage.getItem('details')))
 	}, [])
-	console.log(details, ticket)
 
 	const handleNewTicket = () => {
 		localStorage.clear()
