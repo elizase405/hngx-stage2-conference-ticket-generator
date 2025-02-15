@@ -72,8 +72,8 @@ function SelectTicket() {
 						<div className='flex flex-col justify-between bg-[#052228] border border-[#07373F] rounded-3xl p-4 w-[252px] md:w-full h-[410px] md:h-[158px] mt-2'>
 							<div className='relative flex flex-col md:flex-row justify-between space-y-3 md:space-y-0'>
 								{free && <span className='absolute bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType1'} value='regular' amt={'Free'} accessType='regular access' handleClick={handleFreeButton} register={register}/>
-								{vip && <span className='absolute left-[181px] bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType2'} value='vip' amt={'$150'} accessType='vip access' handleClick={handleVipButton} register={register}/>
-								{vvip && <span className='absolute left-[363px] bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType3'} value='vvip' amt={'$150'} accessType='vvip access' handleClick={handleVVipButton} register={register}/>
+								{vip && <span className='absolute bottom-[110px] md:bottom-0 md:left-[181px] bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType2'} value='vip' amt={'$150'} accessType='vip access' handleClick={handleVipButton} register={register}/>
+								{vvip && <span className='absolute top-[244px] md:top-0 md:left-[363px] bg-[#12464E] w-full md:w-[158px] h-[110px] border border-[#197686] rounded-xl'></span>}<TicketType id={'ticketType3'} value='vvip' amt={'$150'} accessType='vvip access' handleClick={handleVVipButton} register={register}/>
 							</div>
 							{errors.ticketType && <p className='text-red-500 p-1.5 md:p-1 text-sm'>{errors.ticketType?.message}</p>}
 						</div>
