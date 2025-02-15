@@ -14,9 +14,10 @@ const AttendeeDetails = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		axios.get('/tickets')
+		/*axios.get('/tickets')
 			.then(res => setTicket(res.data[0]))
-			.catch(err => console.log('Error fetching tickets: ', err))
+			.catch(err => console.log('Error fetching tickets: ', err)) */
+		setTicket(JSON.parse(localStorage.getItem('tickets')))
 	}, [])
 
 	const handleFileChange = (e) => {
